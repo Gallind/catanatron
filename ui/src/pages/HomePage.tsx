@@ -26,7 +26,7 @@ const PLAYER_ARCHETYPES: Array<{
 }> = [
   { value: "HUMAN", label: "Human" },
   { value: "RANDOM", label: "Random" },
-  { value: "CATANATRON", label: "Catanatron" },
+  { value: "CATANATRON", label: "Cataneural Network" },
   { value: "GENETIC_NN", label: "Genetic NN" },
   { value: "WEIGHTED_RANDOM", label: "Weighted Random" },
 ];
@@ -98,7 +98,7 @@ export default function HomePage() {
   return (
     <div className="home-page">
       <div className="home-page__inner">
-        <h1 className="logo">Catanatron</h1>
+        <h1 className="logo">Cataneural Network</h1>
         {!loading ? (
           <div className="setup-card">
             <p className="setup-note">Open hands. Random discard choice.</p>

@@ -58,7 +58,7 @@ function ReplayScreen() {
 
   return (
     <main>
-      <h1 className="logo">Catanatron</h1>
+      <h1 className="logo">Cataneural Network</h1>
       <ZoomableBoard replayMode={true} />
       <LeftDrawer />
       <RightDrawer>
