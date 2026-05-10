@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 import traceback
 
 from flask import Response, Blueprint, jsonify, abort, request
@@ -21,6 +22,18 @@ VALID_MAP_TEMPLATES = {"BASE", "MINI", "TOURNAMENT"}
 def player_factory(player_key):
     if player_key[0] == "CATANATRON":
         return AlphaBetaPlayer(player_key[1], 2, True)
+    elif player_key[0] == "GENETIC_NN":
+        # Deferred import: only loads numpy / our package when this code is used.
+        # Weights path + ply are configured via environment variables, so this
+        # backend has no compile-time dependency on the genetic_nn_catan package.
+        import numpy as np
+        from genetic_nn_catan.fitness import GeneticNNPlayer
+        weights_path = os.environ.get(
+            "GENETIC_NN_WEIGHTS", "checkpoints/genetic_nn_weights.npy"
+        )
+        ply = int(os.environ.get("GENETIC_NN_PLY", "2"))
+        weights = np.load(weights_path).astype(np.float32)
+        return GeneticNNPlayer(player_key[1], weights, ply=ply)
     elif player_key[0] == "WEIGHTED_RANDOM":
         return WeightedRandomPlayer(player_key[1])
     elif player_key[0] == "RANDOM":

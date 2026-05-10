@@ -27,6 +27,7 @@ const PLAYER_ARCHETYPES: Array<{
   { value: "HUMAN", label: "Human" },
   { value: "RANDOM", label: "Random" },
   { value: "CATANATRON", label: "Catanatron" },
+  { value: "GENETIC_NN", label: "Genetic NN" },
   { value: "WEIGHTED_RANDOM", label: "Weighted Random" },
 ];
 
